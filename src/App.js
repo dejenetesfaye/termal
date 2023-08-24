@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { render, Printer, Text } from 'react-thermal-printer';
 
