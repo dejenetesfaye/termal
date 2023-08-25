@@ -3,7 +3,7 @@ import './App.css';
 import { render, Printer, Text } from 'react-thermal-printer';
 
 async function print() {
-  const port = await window.navigator.serial.requestPort();
+  const port = await window.navigator.usb.requestPort();
   await port.open({ baudRate: 9600 });
 
   const writer = port.writable?.getWriter();
