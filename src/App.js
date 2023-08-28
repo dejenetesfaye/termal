@@ -1,43 +1,33 @@
+import './App.css'
 
-import './App.css';
-import { render, Printer, Text } from 'react-thermal-printer';
+function printDiv(divName) {
+  var printContents = document.getElementById(divName).innerHTML
+  var originalContents = document.body.innerHTML
 
-async function print() {
-  const port = await window.navigator.usb.requestPort();
-  await port.open({ baudRate: 9600 });
+  document.body.innerHTML = printContents
 
-  const writer = port.writable?.getWriter();
-  if (writer != null) {
-    await writer.write(data);
-    writer.releaseLock();
-    console.log(data);
-  }
+  window.print()
+
+  document.body.innerHTML = originalContents
 }
-const data = await render(
-  <Printer type="epson">
-    <Text>Hello World, this is sample react app</Text>
-  </Printer>
-);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={print}>click</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div id='printableArea'>
+        <h1>ቆቅ እንዴት ነሽ?</h1>
+      </div>
+      <div>not printable area</div>
+
+      <input
+        type='button'
+        name='print'
+        className='noprint'
+        onClick={() => printDiv('printableArea')}
+        value='print a div!'
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
