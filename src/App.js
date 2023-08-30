@@ -1,4 +1,5 @@
 import './App.css'
+import { useBarcode } from '@createnextapp/react-barcode';
 
 function printDiv(divName) {
   var printContents = document.getElementById(divName).innerHTML
