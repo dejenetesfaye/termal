@@ -12,6 +12,12 @@ function printDiv(divName) {
 }
 
 function App() {
+  const { inputRef } = useBarcode({
+    value: '123456789145',
+    options: {
+      // background: '#ffff00',
+    },
+  });
   return (
     <div className='App' id="blockContainer" style={{ width: '100%' }}>
       <div id='printableArea'>
